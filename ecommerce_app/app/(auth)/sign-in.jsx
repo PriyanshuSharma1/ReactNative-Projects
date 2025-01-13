@@ -7,12 +7,13 @@ import { useState } from "react";
 import CustomButton from "../../components/CustomButton";
 import { Link } from "expo-router";
 import { Alert, Dimensions } from "react-native";
+import { signIn } from "../../lib/appwrite";
 
 const SignIn = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
-    email: "",
-    password: "",
+    email: "psneb420@gmail.com",
+    password: "HANTON@123",
   });
 
   const submit = async () => {
@@ -23,15 +24,12 @@ const SignIn = () => {
     setSubmitting(true);
 
     try {
-      await signIn(form.email, form.password);
-      const result = await getCurrentUser();
-      setUser(result);
-      setIsLogged(true);
-
-      Alert.alert("Success", "User signed in successfully");
+      const result = await signIn(form.email, form.password);
+      console.log(result);
+      Alert.alert("Success", "User created successfully");
       router.replace("/home");
     } catch (error) {
-      Alert.alert("Error", error.message);
+      Alert.alert("Error", "An error occured while creating");
     } finally {
       setSubmitting(false);
     }

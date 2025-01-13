@@ -12,26 +12,24 @@ import { createUser } from "../../lib/appwrite";
 const SignUp = () => {
   const [isSubmitting, setSubmitting] = useState(false);
   const [form, setForm] = useState({
-    username: "",
-    email: "",
-    password: "",
+    username: "Priyuuu",
+    email: "psneb420@gmail.com",
+    password: "HANTON@123",
   });
 
   const submit = async () => {
-    createUser();
-
+    if (!form.email || !form.username || !form.password) {
+      Alert.alert("Error", "Please fill all fields");
+      return;
+    }
     setSubmitting(true);
-
     try {
-      await signUp(form.username, form.email, form.password);
-      const result = await getCurrentUser();
-      setUser(result);
-      setIsLogged(true);
-
-      Alert.alert("Success", "User signed in successfully");
+      const result = await createUser(form.email, form.password, form.username);
+      console.log(result);
+      Alert.alert("Success", "User created successfully");
       router.replace("/home");
     } catch (error) {
-      Alert.alert("Error", error.message);
+      Alert.alert("Error", "An error occured while creating");
     } finally {
       setSubmitting(false);
     }

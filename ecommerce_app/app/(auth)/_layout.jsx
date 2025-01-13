@@ -1,4 +1,3 @@
-import { View, Text } from "react-native";
 import { Stack } from "expo-router";
 import { StatusBar } from "expo-status-bar";
 import React from "react";
@@ -18,7 +17,6 @@ const AuthLayout = () => {
           headerShown: false,
         }}
       />
-      <StatusBar backgroundColor="#161622" style="light" />
     </Stack>
   );
 };
