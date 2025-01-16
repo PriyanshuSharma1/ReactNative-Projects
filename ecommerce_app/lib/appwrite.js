@@ -5,7 +5,7 @@ const appwriteConfig = {
   projectId: "678003c4002622b59e07",
   platform: "com.priyu.swe",
   databaseId: "678007620029a895d488",
-  usercolledctionId: "678007bf0016e37080eb",
+  usercollectionId: "678007bf0016e37080eb",
   vidscollectionId: "678007e90039430f6d1b",
   storageId: "678009a5002db964b1b8",
 };
@@ -34,7 +34,7 @@ export async function createUser(email, password, username) {
 
     const newUser = await databases.createDocument(
       appwriteConfig.databaseId,
-      appwriteConfig.userCollectionId,
+      appwriteConfig.usercollectionId,
       ID.unique(),
       {
         accountId: newAccount.$id,
